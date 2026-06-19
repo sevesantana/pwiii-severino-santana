@@ -1,11 +1,17 @@
-# TODO - Front-end Minimalista + Glass
+# TODO
 
-## Passos
-- [x] Refinar CSS para foco acessível, espaçamentos, wrapper de formulário e erros inline.
-- [ ] Ajustar layout base (`layouts/app.blade.php`) para manter centralização e spacing consistente.
-- [x] Atualizar `users/create.blade.php` com wrapper do form e exibição de erros inline por campo.
-- [x] Atualizar `users/edit.blade.php` com wrapper do form e exibição de erros inline por campo.
-- [x] Pequenos ajustes em `users/index.blade.php` para remover styles inline e harmonizar UI.
-- [ ] Testar manualmente no navegador: index/create/edit e validações/flash.
+## Front-end simplificado (iniciante/intermediário)
+- [x] Atualizar `resources/views/layouts/app.blade.php` para um layout simples
+- [x] Incluir `resources/views/layouts/partials/flash.blade.php` no layout
+- [x] Simplificar `resources/views/users/index.blade.php` (tabela e ações)
+- [x] Simplificar `resources/views/users/create.blade.php` (formulário)
+- [x] Simplificar `resources/views/users/edit.blade.php` (formulário)
+- [x] Reduzir `resources/css/app.css` para estilos básicos (container/card/table/form)
+
+- [x] Ajustar `resources/views/layouts/partials/flash.blade.php` para formato simples
+
+- [x] Rodar `npm run dev` e validar visualmente as páginas (lista/criar/editar) e mensagens de erro/sucesso
+
+
 
 

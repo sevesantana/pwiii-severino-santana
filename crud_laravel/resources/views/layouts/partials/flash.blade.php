@@ -1,16 +1,17 @@
 @if (session('success'))
-    <div class="bbai-flash bbai-flash-success" role="status" aria-live="polite">
+    <div class="alert alert-success" role="status" aria-live="polite">
         {{ session('success') }}
     </div>
 @endif
 
 @if ($errors->any())
-    <div class="bbai-flash bbai-flash-error" role="alert">
-        <ul class="bbai-flash-list">
+    <div class="alert alert-danger" role="alert">
+        <ul class="m-0">
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
 @endif
+
 

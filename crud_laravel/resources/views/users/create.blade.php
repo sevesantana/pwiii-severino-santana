@@ -3,114 +3,74 @@
 @section('title', 'Novo Usuário')
 
 @section('header')
-    <div class="text-center mb-8 animate-fade-in">
-        <h1 class="bbai-title">Novo Usuário</h1>
-        <div class="bbai-subtitle">Preencha os dados abaixo para cadastrar um novo usuário no sistema.</div>
-    </div>
+    <h1 class="h1">Novo Usuário</h1>
+    <p class="text-muted">Preencha os dados para cadastrar.</p>
 @endsection
 
 @section('content')
-    <div class="animate-fade-in max-w-xl mx-auto" style="animation-delay: 0.1s">
-        <!-- Back action -->
-        <div class="flex justify-start mb-6">
-            <a href="{{ route('users.index') }}" class="bbai-link text-xs !h-9 !px-3">
-                <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-                </svg>
-                Voltar para a Lista
-            </a>
+    <a href="{{ route('users.index') }}" class="btn btn-secondary mb-3">Voltar</a>
+
+    <form action="{{ route('users.store') }}" method="POST" class="form">
+        @csrf
+
+        <div class="field">
+            <label for="name">Nome</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ old('name') }}"
+                placeholder="Ex: Gabriel Alvarez"
+                required
+                autofocus
+                class="form-control"
+            />
+            @error('name')
+                <div class="error">{{ $message }}</div>
+            @enderror
         </div>
 
-        <form action="{{ route('users.store') }}" method="POST">
-            @csrf
+        <div class="field">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{ old('email') }}"
+                placeholder="Ex: gabriel@exemplo.com"
+                required
+                class="form-control"
+            />
+            @error('email')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
 
-            <div class="bbai-form space-y-4">
-                <!-- Name Field -->
-                <div class="bbai-field">
-                    <label for="name" class="bbai-label">Nome Completo</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value="{{ old('name') }}"
-                        class="bbai-input"
-                        placeholder="Ex: Gabriel Alvarez"
-                        required
-                        autofocus
-                    />
-                    @error('name')
-                        <div class="bbai-error-text">
-                            <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                            <span>{{ $message }}</span>
-                        </div>
-                    @enderror
-                </div>
+        <div class="field">
+            <label for="age">Idade</label>
+            <input
+                type="number"
+                id="age"
+                name="age"
+                value="{{ old('age') }}"
+                placeholder="Ex: 28"
+                min="0"
+                max="120"
+                required
+                class="form-control"
+            />
+            @error('age')
+                <div class="error">{{ $message }}</div>
+            @enderror
+        </div>
 
-                <!-- Email Field -->
-                <div class="bbai-field">
-                    <label for="email" class="bbai-label">Endereço de E-mail</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value="{{ old('email') }}"
-                        class="bbai-input"
-                        placeholder="Ex: gabriel@exemplo.com"
-                        required
-                    />
-                    @error('email')
-                        <div class="bbai-error-text">
-                            <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                            <span>{{ $message }}</span>
-                        </div>
-                    @enderror
-                </div>
-
-                <!-- Age Field -->
-                <div class="bbai-field">
-                    <label for="age" class="bbai-label">Idade</label>
-                    <input
-                        type="number"
-                        id="age"
-                        name="age"
-                        value="{{ old('age') }}"
-                        class="bbai-input"
-                        placeholder="Ex: 28"
-                        min="0"
-                        max="120"
-                        required
-                    />
-                    @error('age')
-                        <div class="bbai-error-text">
-                            <svg class="w-4 h-4 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                            </svg>
-                            <span>{{ $message }}</span>
-                        </div>
-                    @enderror
-                </div>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center justify-end gap-3 pt-4 border-t border-white/5 mt-6">
-                    <a href="{{ route('users.index') }}" class="bbai-link !h-11">
-                        Cancelar
-                    </a>
-                    
-                    <button type="submit" class="bbai-btn bbai-btn--primary !h-11 !px-6">
-                        <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/>
-                        </svg>
-                        Salvar Usuário
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
+        <div class="actions mb-2">
+            <a href="{{ route('users.index') }}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
 @endsection
+
 
 
 
